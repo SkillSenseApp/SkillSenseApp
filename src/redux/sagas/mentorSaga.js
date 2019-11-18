@@ -108,7 +108,7 @@ function* sendMentorRequest(action) {
 //MENTORS: UPDATE STUDENT_MENTOR TO APPROVED: TRUE
 function* acceptMentorship(action) {
 	try {
-		yield axios.put(`/api/mentors/accept/${action.payload.student.id}`);
+		yield axios.put(`/api/mentors/accept/${action.payload.student_id}`);
 		yield put({
 			type: 'SEND_SYSTEM_MESSAGE',
 			payload: {
