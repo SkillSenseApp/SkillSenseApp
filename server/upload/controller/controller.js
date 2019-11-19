@@ -26,12 +26,15 @@ exports.sign_s3 = (req, res) => {
 		if (err) {
 			console.log('Error in AWS file upload', err);
 			res.json({ success: false, error: err });
+		} else {
+		  
+			const returnData = {
+		  		signedRequest: data,
+		  		url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+			};
+			res.json({ success: true, data: { returnData } });
 		}
 		// Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
-		const returnData = {
-			signedRequest: data,
-			url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-		};
-		res.json({ success: true, data: { returnData } });
+		
 	});
 };
