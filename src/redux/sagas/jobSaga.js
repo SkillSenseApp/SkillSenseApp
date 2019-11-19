@@ -156,7 +156,7 @@ function* submitApplication(action) {
 	try {
 		let application = action.payload.application;
 		let job = action.payload.job;
-		if (application.file !== null) {
+		if (application.file && application.file.name) {
 			let file = application.file;
 			let fileParts = file.name.split('.');
 			let fileName = fileParts[0];
